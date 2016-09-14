@@ -51,7 +51,9 @@ namespace FeedWebpage.Feeds
             result.Title = titlePart.InnerHtml;
             var dateTimeString = copyPart.SelectSingleNode(".//time").Attributes["datetime"].Value;
             result.DateTime = DateTime.Parse(dateTimeString);
-            result.Category = copyPart.SelectSingleNode(".//h5").InnerHtml;
+            Logger.Debug("Got datetime string {0}, made: {1}", dateTimeString, result.DateTime);
+            result.Category = copyPart.SelectSingleNode(".//h5").FirstChild.InnerHtml;
+            Logger.Debug("Got category as {0}", result.Category);
             return result;
         }
 

@@ -11,7 +11,7 @@ namespace FeedWebpage.Controllers
     {
         private readonly RunescapeFeedCache _runescapeFeedCache = new RunescapeFeedCache();
 
-        public ActionResult RunescapeFeed()
+        public ActionResult Runescape()
         {
             return Json(_runescapeFeedCache.Retrieve(), JsonRequestBehavior.AllowGet);
         }

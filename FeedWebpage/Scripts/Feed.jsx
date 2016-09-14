@@ -1,32 +1,14 @@
 
 var Feed = React.createClass({
-    loadDataFromServer: function () {
-        var xhr = new XMLHttpRequest();
-        xhr.open('get', this.props.url, true);
-        xhr.onload = function () {
-            var data = JSON.parse(xhr.responseText);
-            this.setState({ data: data });
-        }.bind(this);
-        xhr.send();
-    },
-    getInitialState: function () {
-        return { data: [] };
-    },
-    componentDidMount: function () {
-        this.loadDataFromServer();
-        window.setInterval(this.loadDataFromServer, this.props.pollInterval);
-    },
     render: function () {
+        var dateTimeString = new Date(parseInt(this.props.datetime.replace("/Date(", "").replace(")/", ""), 10)).toDateString();
         return (
           <div className="feed">
-              Example news feed!
+              <h4 className="title"><a href={this.props.link}>{this.props.title}</a></h4>
+              <h5 className="category">Category: {this.props.category}</h5>
+              <p className="summary">{this.props.summary}</p>
+              <p className="postDate">Posted at: <time className="timePosted">{dateTimeString}</time></p>
           </div>
       );
-}
+    }
 });
-
-
-ReactDOM.render(
-    <Feed url="/feeditem" pollInterval="10000"/>,
-  document.getElementById('content')
-);
