@@ -4,8 +4,7 @@ var WebsiteFeed = React.createClass({
         xhr.open('get', this.props.url, true);
         xhr.onload = function () {
             var data = JSON.parse(xhr.responseText);
-            console.log(data.Feeds);
-            this.setState({ data: data.Feeds });
+            this.setState({ data: data.Posts });
         }.bind(this);
         xhr.send();
     },
@@ -17,26 +16,16 @@ var WebsiteFeed = React.createClass({
         window.setInterval(this.loadDataFromServer, this.props.pollInterval);
     },
     render: function () {
-        var feedItems = this.state.data.map(function (feed) {
-            console.log("[FeedList] Making feed from: " + feed);
-            return (
-                <li>
-                    <Post title={feed.Title} link={feed.Link} summary={feed.Summary} category={feed.Category} datetime={feed.DateTime } />
-                </li>
-            );
-        });
         return (
-            <div className="feedListContainer">
+            <div className="websiteFeed">
                 <h2>News for {this.props.websiteName}</h2>
-                <ul className="feedList">
-                    {feedItems}
-                </ul>
+                <PostList data={this.state.data} />
             </div>
       );
     }
 });
 
-var WebsiteFeedList = React.createClass({
+var Websites = React.createClass({
     getInitialState: function () {
         return {
             websites: [
@@ -54,13 +43,13 @@ var WebsiteFeedList = React.createClass({
             );
         });
         return (
-            <li className="websiteList">{websiteFeeds}</li>
+            <ul className="websites">{websiteFeeds}</ul>
         );
     }
 });
 
 
 ReactDOM.render(
-    <WebsiteFeedList />,
+    <Websites />,
     document.getElementById('content')
 );

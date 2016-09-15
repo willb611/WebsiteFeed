@@ -10,9 +10,9 @@ namespace FeedWebpage.Models.FeedCaches
             Update();
         }
 
-        public abstract void Clear();
+        public abstract void Refresh();
         protected abstract PostFeed Update();
-        public virtual PostFeed Retrieve()
+        public virtual PostFeed Get()
         {
             return Update();
         }

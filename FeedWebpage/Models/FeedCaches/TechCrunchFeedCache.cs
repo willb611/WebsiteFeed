@@ -8,7 +8,7 @@ namespace FeedWebpage.Models.FeedCaches
 
         private volatile PostFeed _active;
 
-        public override void Clear()
+        public override void Refresh()
         {
             _active = null;
             Update();
@@ -21,7 +21,7 @@ namespace FeedWebpage.Models.FeedCaches
             return _active;
         }
 
-        public override PostFeed Retrieve()
+        public override PostFeed Get()
         {
             return _active ?? Update();
         }

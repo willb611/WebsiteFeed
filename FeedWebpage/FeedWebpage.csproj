@@ -184,6 +184,7 @@
   <ItemGroup>
     <Compile Include="Controllers\FeedsController.cs" />
     <Compile Include="Feeds\TechChrunchFeedUpdater.cs" />
+    <Compile Include="Models\TimedCacheRefresher.cs" />
     <Compile Include="Models\FeedCaches\TechCrunchFeedCache.cs" />
     <Compile Include="Feeds\FeedParserTemplate.cs" />
     <Compile Include="Feeds\RssFeedParser.cs" />
