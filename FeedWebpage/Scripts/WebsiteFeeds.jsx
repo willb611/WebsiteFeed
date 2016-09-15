@@ -1,4 +1,4 @@
-var FeedList = React.createClass({
+var WebsiteFeed = React.createClass({
     loadDataFromServer: function () {
         var xhr = new XMLHttpRequest();
         xhr.open('get', this.props.url, true);
@@ -21,7 +21,7 @@ var FeedList = React.createClass({
             console.log("[FeedList] Making feed from: " + feed);
             return (
                 <li>
-                    <Feed title={feed.Title} link={feed.Link} summary={feed.Summary} category={feed.Category} datetime={feed.DateTime } />
+                    <Post title={feed.Title} link={feed.Link} summary={feed.Summary} category={feed.Category} datetime={feed.DateTime } />
                 </li>
             );
         });
@@ -49,7 +49,7 @@ var WebsiteFeedList = React.createClass({
         var websiteFeeds = this.state.websites.map(function (feed) {
             return (
                 <li>
-                    <FeedList url={feed.url} pollInterval={feed.pollInterval} websiteName={feed.websiteName} />
+                    <WebsiteFeed url={feed.url} pollInterval={feed.pollInterval} websiteName={feed.websiteName} />
                 </li>
             );
         });

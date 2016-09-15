@@ -23,9 +23,9 @@ namespace FeedWebpage.Controllers
             return AsJson(_techCrunchFeedCache.Retrieve());
         }
 
-        private JsonResult AsJson(FeedList feedList)
+        private JsonResult AsJson(PostFeed postFeed)
         {
-            return Json(feedList, JsonRequestBehavior.AllowGet);
+            return Json(postFeed, JsonRequestBehavior.AllowGet);
         }
     }
 }

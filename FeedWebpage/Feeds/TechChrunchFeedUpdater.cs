@@ -37,7 +37,7 @@ namespace FeedWebpage.Feeds
             }
         }
 
-        public FeedList GetLatest()
+        public PostFeed GetLatest()
         {
             var page = DownloadPageWithRetries();
             var latestFeed = _rssFeedParser.ParseHtml(page);

@@ -67,7 +67,7 @@ namespace FeedWebpage.Feeds.Tests
             document.LoadHtml(HtmlHelper.PageThenBodyStartHtml + HtmlEntity.DeEntitize(Item) + HtmlHelper.PageThenBodyEndHtml);
             var itemNode = document.DocumentNode.SelectSingleNode("//item");
             var expected =
-                new FeedItemModel.Builder().WithTitle(PostTitle)
+                new PostModel.Builder().WithTitle(PostTitle)
                     .WithDateTime(DateTime.Parse(PublishDateTime))
                     .WithLink(PostLink)
                     .Build();

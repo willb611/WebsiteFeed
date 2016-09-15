@@ -6,7 +6,7 @@ namespace FeedWebpage.Models.FeedCaches
     {
         private readonly TechChrunchFeedUpdater _techChrunchFeedUpdater = new TechChrunchFeedUpdater();
 
-        private volatile FeedList _active;
+        private volatile PostFeed _active;
 
         public override void Clear()
         {
@@ -14,14 +14,14 @@ namespace FeedWebpage.Models.FeedCaches
             Update();
         }
 
-        protected override FeedList Update()
+        protected override PostFeed Update()
         {
             var latest = _techChrunchFeedUpdater.GetLatest();
             _active = latest;
             return _active;
         }
 
-        public override FeedList Retrieve()
+        public override PostFeed Retrieve()
         {
             return _active ?? Update();
         }

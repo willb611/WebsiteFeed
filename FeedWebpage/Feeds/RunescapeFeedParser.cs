@@ -19,7 +19,11 @@ namespace FeedWebpage.Feeds
             _maxItemsInFeed = maxItemsInFeed;
         }
 
-        public FeedList ParseHtml(string html)
+        public RunescapeFeedParser() : this(5)
+        {
+        }
+
+        public PostFeed ParseHtml(string html)
         {
             if (html == null)
             {
@@ -28,12 +32,12 @@ namespace FeedWebpage.Feeds
             HtmlDocument document = new HtmlDocument();
             document.LoadHtml(html);
 
-            List<FeedItemModel> feedList = new List<FeedItemModel>();
+            List<PostModel> feedList = new List<PostModel>();
             foreach (var article in SelectArticleFromDocument(document))
             {
                 feedList.Add(ParseArticle(article));
             }
-            return new FeedList(feedList).LimitedToSize(_maxItemsInFeed);
+            return new PostFeed(feedList).LimitedToSize(_maxItemsInFeed);
         }
 
         private HtmlNodeCollection SelectArticleFromDocument(HtmlDocument document)
@@ -47,11 +51,11 @@ namespace FeedWebpage.Feeds
             return documentNode.SelectSingleNode("//div[@id='news']");
         }
 
-        internal FeedItemModel ParseArticle(HtmlNode article)
+        internal PostModel ParseArticle(HtmlNode article)
         {
             var copyPart = article.SelectSingleNode(".//div[@class='copy']");
             var titlePart = copyPart.SelectSingleNode(".//h4").FirstChild;
-            var resultBuilder = new FeedItemModel.Builder().WithTitle(titlePart.InnerHtml);
+            var resultBuilder = new PostModel.Builder().WithTitle(titlePart.InnerHtml);
             var link = titlePart.Attributes["href"].Value;
             var dateTimeString = copyPart.SelectSingleNode(".//time").Attributes["datetime"].Value;
             resultBuilder = resultBuilder.WithDateTime(DateTime.Parse(dateTimeString));

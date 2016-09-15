@@ -173,7 +173,7 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\FeedList.jsx" />
+    <Content Include="Scripts\WebsiteFeeds.jsx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -200,12 +200,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\ReactConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Models\FeedItemModel.cs" />
-    <Compile Include="Models\FeedList.cs" />
+    <Compile Include="Models\PostModel.cs" />
+    <Compile Include="Models\PostFeed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Scripts\Feed.jsx" />
+    <None Include="Scripts\Post.jsx" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

@@ -8,6 +8,6 @@ namespace FeedWebpage.Feeds
 {
     public interface IFeedParserTemplate
     {
-        FeedList ParseHtml(string html);
+        PostFeed ParseHtml(string html);
     }
 }

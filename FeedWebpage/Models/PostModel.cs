@@ -5,7 +5,7 @@ using System.Web;
 
 namespace FeedWebpage.Models
 {
-    public class FeedItemModel
+    public class PostModel
     {
         private readonly DateTime _dateTime;
         private readonly string _link;
@@ -20,7 +20,7 @@ namespace FeedWebpage.Models
         public string Summary => _summary;
         public string Category => _category;
         
-        private FeedItemModel(DateTime dateTime, string link, string title, string summary, string category)
+        private PostModel(DateTime dateTime, string link, string title, string summary, string category)
         {
             _dateTime = dateTime;
             _link = link;
@@ -63,9 +63,9 @@ namespace FeedWebpage.Models
                 return this;
             }
 
-            public FeedItemModel Build()
+            public PostModel Build()
             {
-                return new FeedItemModel(_dateTime, _link, _title, _summary, _category);
+                return new PostModel(_dateTime, _link, _title, _summary, _category);
             }
         }
     }

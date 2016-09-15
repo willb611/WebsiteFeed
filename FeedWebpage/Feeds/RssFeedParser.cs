@@ -18,18 +18,18 @@ namespace FeedWebpage.Feeds
             _maxItemsInFeed = maxItemsInFeed;
         }
 
-        public FeedList ParseHtml(string html)
+        public PostFeed ParseHtml(string html)
         {
             HtmlDocument document = new HtmlDocument();
             ModifyHtmlAgilityStaticSettings();
             document.LoadHtml(html);
             var items = GetItemsFromPage(document);
-            List<FeedItemModel> feedItemModels = new List<FeedItemModel>();
+            List<PostModel> feedItemModels = new List<PostModel>();
             foreach (var item in items)
             {
                 feedItemModels.Add(ParseItem(item));
             }
-            return new FeedList(feedItemModels).LimitedToSize(_maxItemsInFeed);
+            return new PostFeed(feedItemModels).LimitedToSize(_maxItemsInFeed);
         }
 
         private void ModifyHtmlAgilityStaticSettings()
@@ -44,9 +44,9 @@ namespace FeedWebpage.Feeds
             return document.DocumentNode.SelectNodes("//item");
         }
 
-        internal FeedItemModel ParseItem(HtmlNode item)
+        internal PostModel ParseItem(HtmlNode item)
         {
-            var builder = new FeedItemModel.Builder();
+            var builder = new PostModel.Builder();
             builder = builder.WithTitle(item.SelectSingleNode("./title").InnerHtml);
             var link = LinkUrlFromItem(item);
             builder = builder.WithLink(link);

@@ -1,5 +1,5 @@
 
-var Feed = React.createClass({
+var Post = React.createClass({
     render: function () {
         var dateTimeString = new Date(parseInt(this.props.datetime.replace("/Date(", "").replace(")/", ""), 10)).toDateString();
         return (

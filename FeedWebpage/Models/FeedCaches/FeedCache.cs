@@ -11,8 +11,8 @@ namespace FeedWebpage.Models.FeedCaches
         }
 
         public abstract void Clear();
-        protected abstract FeedList Update();
-        public virtual FeedList Retrieve()
+        protected abstract PostFeed Update();
+        public virtual PostFeed Retrieve()
         {
             return Update();
         }
