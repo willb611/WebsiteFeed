@@ -4,21 +4,21 @@ using NLog;
 
 namespace FeedWebpage.Feeds
 {
-    public class RunescapeFeedUpdater
+    internal class TechChrunchFeedUpdater
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private readonly WebClient _webClient = new WebClient();
-        private readonly RunescapeFeedParser _runescapeFeedParser;
+        private readonly RssFeedParser _rssFeedParser;
 
         public string RequestUrl { get; }
 
-        public RunescapeFeedUpdater(string requestUrl, int maxNumberOfPostsToRetrieve)
+        public TechChrunchFeedUpdater(string requestUrl, int maxNumberOfPostsToRetrieve)
         {
             RequestUrl = requestUrl;
-            _runescapeFeedParser = new RunescapeFeedParser(maxNumberOfPostsToRetrieve);
+            _rssFeedParser = new RssFeedParser(maxNumberOfPostsToRetrieve);
         }
 
-        public RunescapeFeedUpdater() : this("http://runescape.com/community", 5)
+        public TechChrunchFeedUpdater() : this("http://feeds.feedburner.com/TechCrunch/startups", 3)
         {
         }
 
@@ -40,7 +40,7 @@ namespace FeedWebpage.Feeds
         public FeedList GetLatest()
         {
             var page = DownloadPageWithRetries();
-            var latestFeed =_runescapeFeedParser.ParseHtml(page);
+            var latestFeed = _rssFeedParser.ParseHtml(page);
             Logger.Info("[GetLatest] Updated successfully");
             return latestFeed;
         }

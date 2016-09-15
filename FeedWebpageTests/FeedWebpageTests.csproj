@@ -60,6 +60,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Feeds\HtmlHelper.cs" />
+    <Compile Include="Feeds\RssFeedParserTests.cs" />
     <Compile Include="Feeds\RunescapeFeedParserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

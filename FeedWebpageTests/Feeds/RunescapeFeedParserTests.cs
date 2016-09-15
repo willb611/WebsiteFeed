@@ -1,15 +1,9 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FeedWebpage.Feeds;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using HtmlAgilityPack;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NLog;
 
-namespace FeedWebpage.Feeds.Tests
+namespace FeedWebpageTests.Feeds
 {
 
     [TestClass()]
@@ -78,7 +72,7 @@ namespace FeedWebpage.Feeds.Tests
         public void NewsSectionElementFromNewsElement_ShouldWork()
         {
             var doc = new HtmlDocument();
-            doc.LoadHtml("<html><body>\n" + newsElement + "\n</body></html>");
+            doc.LoadHtml(HtmlHelper.PageThenBodyStartHtml + newsElement + HtmlHelper.PageThenBodyEndHtml);
             var bodyNode = doc.DocumentNode.SelectSingleNode("//body");
             Logger.Info("Using bodyNode with innerhtml: {0}", bodyNode.InnerHtml);
 
@@ -91,7 +85,7 @@ namespace FeedWebpage.Feeds.Tests
         public void ArticlesFromSection_ShouldWork()
         {
             var doc = new HtmlDocument();
-            doc.LoadHtml("<html><body>" + newsSection + "</body></html>");
+            doc.LoadHtml(HtmlHelper.PageThenBodyStartHtml + newsSection + HtmlHelper.PageThenBodyEndHtml);
             var bodyNode = doc.DocumentNode.SelectSingleNode("//body");
             Logger.Info("Using bodyNode with innerhtml: {0}", bodyNode.InnerHtml);
 

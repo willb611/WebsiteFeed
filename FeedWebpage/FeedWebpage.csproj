@@ -183,6 +183,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\FeedsController.cs" />
+    <Compile Include="Feeds\TechChrunchFeedUpdater.cs" />
+    <Compile Include="Models\FeedCaches\TechCrunchFeedCache.cs" />
+    <Compile Include="Feeds\FeedParserTemplate.cs" />
+    <Compile Include="Feeds\RssFeedParser.cs" />
     <Compile Include="Feeds\RunescapeFeedParser.cs" />
     <Compile Include="Feeds\RunescapeFeedUpdater.cs" />
     <Compile Include="Models\FeedCaches\FeedCache.cs" />
@@ -206,9 +210,7 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Feeds\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

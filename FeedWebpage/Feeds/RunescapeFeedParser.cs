@@ -9,11 +9,17 @@ using NLog;
 
 namespace FeedWebpage.Feeds
 {
-    public class RunescapeFeedParser
+    public class RunescapeFeedParser : IFeedParserTemplate
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        private readonly int _maxItemsInFeed;
 
-        public FeedList ParseFeed(string html)
+        public RunescapeFeedParser(int maxItemsInFeed)
+        {
+            _maxItemsInFeed = maxItemsInFeed;
+        }
+
+        public FeedList ParseHtml(string html)
         {
             if (html == null)
             {
@@ -27,7 +33,7 @@ namespace FeedWebpage.Feeds
             {
                 feedList.Add(ParseArticle(article));
             }
-            return new FeedList(feedList);
+            return new FeedList(feedList).LimitedToSize(_maxItemsInFeed);
         }
 
         private HtmlNodeCollection SelectArticleFromDocument(HtmlDocument document)
@@ -43,16 +49,15 @@ namespace FeedWebpage.Feeds
 
         internal FeedItemModel ParseArticle(HtmlNode article)
         {
-            var result = new FeedItemModel();
             var copyPart = article.SelectSingleNode(".//div[@class='copy']");
             var titlePart = copyPart.SelectSingleNode(".//h4").FirstChild;
+            var resultBuilder = new FeedItemModel.Builder().WithTitle(titlePart.InnerHtml);
             var link = titlePart.Attributes["href"].Value;
-            result.Link = link;
-            result.Title = titlePart.InnerHtml;
             var dateTimeString = copyPart.SelectSingleNode(".//time").Attributes["datetime"].Value;
-            result.DateTime = DateTime.Parse(dateTimeString);
+            resultBuilder = resultBuilder.WithDateTime(DateTime.Parse(dateTimeString));
+            var category = copyPart.SelectSingleNode(".//h5").FirstChild.InnerHtml;
+            var result = resultBuilder.WithLink(link).WithCategory(category).Build();
             Logger.Debug("Got datetime string {0}, made: {1}", dateTimeString, result.DateTime);
-            result.Category = copyPart.SelectSingleNode(".//h5").FirstChild.InnerHtml;
             Logger.Debug("Got category as {0}", result.Category);
             return result;
         }
