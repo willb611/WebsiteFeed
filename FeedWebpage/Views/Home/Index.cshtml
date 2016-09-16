@@ -8,11 +8,15 @@
     <title>Index</title>
 </head>
 <body>
-    <script src="https://fb.me/react-15.0.1.js"></script>
-<script src="https://fb.me/react-dom-15.0.1.js"></script>
     <h1 class="title">Aggregated feeds</h1>
-    <div id="content"></div>
-    <script src="@Url.Content("~/scripts/Post.jsx")"></script>
-    <script src="@Url.Content("~/scripts/WebsiteFeeds.jsx")"></script>
+    <script src="https://fb.me/react-15.0.1.js"></script>
+    <script src="https://fb.me/react-dom-15.0.1.js"></script>
+    <div id="content">
+        @Html.React("Scripts.WebsiteFeed", new { rendered=true })
+    </div>
+    <script src="@Url.Content("~/build/client.bundle.js")"></script>
+
+
+    @Html.ReactInitJavaScript()
 </body>
 </html>

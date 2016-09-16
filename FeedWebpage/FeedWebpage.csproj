@@ -44,6 +44,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ClearScript, Version=5.4.5.0, Culture=neutral, PublicKeyToken=935d0c957da47c73, processorArchitecture=MSIL">
@@ -166,16 +167,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="build\client.bundle.js" />
+    <Content Include="build\server.bundle.js" />
+    <Content Include="Content\client.js" />
+    <Content Include="Content\server.js" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
+    <Content Include="Scripts\Index.js" />
     <Content Include="Views\web.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\WebsiteFeeds.jsx">
+    <Content Include="Scripts\WebsiteFeed.jsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="webpack.config.js" />
+    <Content Include="Scripts\PostList.jsx" />
+    <Content Include="Scripts\Websites.jsx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
