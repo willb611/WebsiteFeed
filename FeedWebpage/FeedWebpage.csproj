@@ -189,6 +189,12 @@
     <Content Include="webpack.config.js" />
     <Content Include="Scripts\PostList.jsx" />
     <Content Include="Scripts\WebsiteFeed.jsx" />
+    <Content Include="build\client.bundle.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="build\server.bundle.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
