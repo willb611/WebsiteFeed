@@ -1,3 +1,4 @@
+/// <binding BeforeBuild='Run - Production' ProjectOpened='Watch - Development' />
 var path = require('path');
 
 module.exports = {

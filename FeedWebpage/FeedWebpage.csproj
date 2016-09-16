@@ -167,8 +167,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="build\client.bundle.js" />
-    <Content Include="build\server.bundle.js" />
+    <Content Include="build\client.bundle.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="build\server.bundle.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\client.js" />
     <Content Include="Content\server.js" />
     <Content Include="Global.asax" />
@@ -259,6 +263,10 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\JavaScriptEngineSwitcher.V8.1.5.2\build\JavaScriptEngineSwitcher.V8.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\JavaScriptEngineSwitcher.V8.1.5.2\build\JavaScriptEngineSwitcher.V8.props'))" />
   </Target>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
