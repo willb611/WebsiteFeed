@@ -13,3 +13,5 @@ var Post = React.createClass({
       );
     }
 });
+
+module.exports = Post;

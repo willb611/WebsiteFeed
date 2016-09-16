@@ -1,1 +1,1 @@
-var Components = require('expose?Scripts!../Scripts')
+var Scripts = require('expose?Scripts!../Scripts')

@@ -179,12 +179,12 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\WebsiteFeed.jsx">
+    <Content Include="Scripts\Websites.jsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="webpack.config.js" />
     <Content Include="Scripts\PostList.jsx" />
-    <Content Include="Scripts\Websites.jsx" />
+    <Content Include="Scripts\WebsiteFeed.jsx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
