@@ -177,6 +177,7 @@
     <Content Include="Content\server.js" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
+    <Content Include="Scripts\GoogleAnalytics.js" />
     <Content Include="Scripts\Index.js" />
     <Content Include="Views\web.config" />
     <Content Include="Views\Home\Index.cshtml" />

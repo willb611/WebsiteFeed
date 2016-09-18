@@ -1,1 +1,2 @@
-﻿var Scripts = require('expose?Scripts!../Scripts')
+var Scripts = require('expose?Scripts!../Scripts')
+require('../Scripts/GoogleAnalytics.js')
