@@ -1,12 +1,16 @@
 {
   "name": "feedwebpage",
   "version": "1.0.0",
-  "description": "",
+  "description": "Project to display simple feed from some websites I watch",
   "main": "index.js",
+  "repository" :
+  { "type" : "git"
+    , "url" : "https://github.com/willb611/WebsiteFeed.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "William A. O. Brown",
   "license": "ISC",
   "devDependencies": {
     "jsx-loader": "^0.13.2",
