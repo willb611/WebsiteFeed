@@ -1,0 +1,4 @@
+exports[`Welcome (Snapshot) Welcome renders PostList 1`] = `
+<ul
+  className="postList" />
+`;
